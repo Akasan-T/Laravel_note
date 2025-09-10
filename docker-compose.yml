@@ -5,3 +5,12 @@ services:
       - .:/workdir
     ports:
       - 9000:9000
+  db:
+    image: mysql:8.3
+    volumes:
+      - ./laravel_app/mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: dev
+    ports:
+      - 3306:3306
