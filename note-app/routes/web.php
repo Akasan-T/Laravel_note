@@ -27,3 +27,5 @@ Route::middleware('auth')->group(function() {
         Route::get('/', [NoteController::class, 'index'])->name("note");
     });
 });
+
+Route::resource('notes',NoteController::class)->middleware('auth');

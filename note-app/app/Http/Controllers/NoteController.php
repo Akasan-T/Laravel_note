@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class NoteController extends Controller
 {
     function index() {
-        return view("note.index");
+        $notes = auth()->user()->notes()->latest()->get();
+
+        return view("note.index", compact('notes'));
     }
 }
