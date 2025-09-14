@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
+    <link rel="stylesheet" href="{{ asset('/css/note.css')  }}" >
     <title>表示ページ</title>
 </head>
 <body>
+    <header>
+        <h1><a href="{{ route('note') }}">CodeNote</a></h1>
+    </header>
     @extends('layouts.app')
 
     @section('content')
-    <div>
-        <h1>ノート一覧</h1>
+    <div class="note_box">
 
-        <a href="{{ route('notes.create') }}">新規作成</a>
+        <button><a href="{{ route('notes.create') }}">新規作成</a></button>
+
+        <h2>ノート一覧</h2>
 
         @if($notes->count())
             <ul>

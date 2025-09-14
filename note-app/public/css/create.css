@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+body { 
+    font-family: sans-serif; 
+    overflow: hidden;
+}
+
+.editor-container{
+    display:flex;
+    margin: 0 70px;
+}
+
+label { 
+    font-weight: bold; 
+}
+
+.CodeMirror {
+    font-family: 'Fira Code', monospace;
+    width: 650px;
+    height: 580px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 8px;   
+    border: 1px solid #ddd;
+}
+
+.preview-container{
+    margin-top:80px;
+    margin-left:50px;
+}
+
+#preview {
+    font-family: 'Fira Code', monospace;
+    background: #fafafa;
+    overflow:auto;
+    padding:0 1em;
+    width: 650px;
+    height: 580px;
+    margin:0;
+}
+
+#title{
+    width: 645px;
+    height: 30px;
+    font-size:20px;
+    font-family: 'Fira Code', monospace;
+    margin-bottom: 20px;
+}
+
+input ,#preview{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.preview-container button{
+    margin-top: 23px;
+}
