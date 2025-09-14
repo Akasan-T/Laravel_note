@@ -6,9 +6,7 @@ use App\Http\Controllers\LoginCONTROLLER;
 use App\Http\Controllers\SignUpCONTROLLER;
 use App\Http\Controllers\NoteCONTROLLER;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[NoteController::class, 'index']);
 
 Route::get('/top', [TopCONTROLLER::class, 'index'])->name("top");
 
