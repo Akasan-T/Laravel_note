@@ -5,6 +5,7 @@ use App\Http\Controllers\TopCONTROLLER;
 use App\Http\Controllers\LoginCONTROLLER;
 use App\Http\Controllers\SignUpCONTROLLER;
 use App\Http\Controllers\NoteCONTROLLER;
+use App\Http\Controllers\LabelController;
 
 Route::get('/',[NoteController::class, 'index']);
 
@@ -27,3 +28,10 @@ Route::middleware('auth')->group(function() {
 });
 
 Route::resource('notes',NoteController::class)->middleware('auth');
+
+Route::get('labels', [LabelController::class, 'index'])->name('labels.index');
+Route::get('labels/create',[LabelController::class, 'create'])->name('labels.create');
+Route::post('labels', [LabelController::class, 'store'])->name('labels.store');
+Route::get('labels/{label}/edit', [LabelController::class, 'edit'])->name('labels.edit');
+Route::put('labels/{label}', [LabelController::class, 'update'])->name('labels.update');
+Route::delete('labels/{label}', [LabelController::class, 'destroy'])->name('labels.destroy');

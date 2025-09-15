@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdownエディタ作成</title>
+    <title>【ノート】新規作成</title>
     <!-- CodeMirror CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/idea.min.css">
@@ -30,6 +30,12 @@
 
         <!-- プレビュー側 -->
         <div class="preview-container">
+            <label for="labels">ラベル</label><br>
+            <select name="labels[]" id="labels" multiple>
+                @foreach($labels as $label)
+                    <option value="{{ $label->id }}">{{ $label->name }}</option>
+                @endforeach
+            </select><br>
             <label for="preview">プレビュー</label>
             <div id="preview"></div>
             <button><a href="{{ route('note') }}">戻る</a></button>
@@ -78,6 +84,21 @@
             var scrollInfo = editor.getScrollInfo();
             editor.scrollTo(null, scrollRatio * (scrollInfo.height - scrollInfo.clientHeight));
             isSyncingPreview = false;
+        });
+
+        editor.on("cursorActivity", function() {
+            const content = editor.getValue();
+            const from = editor.getCursor("from");
+            const to = editor.getCursor("to");
+
+            const start = editor.indexFromPos(from);
+            const end = editor.indexFromPos(to);
+
+            let highlighted = content.substring(0, start)
+                + "<mark>" + content.substring(start, end) + "</mark>"
+                + content.substring(end);
+
+            document.getElementById("preview").innerHTML = marked.parse(highlighted);
         });
     </script>
 </body>

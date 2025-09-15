@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Note;
+use App\Models\Label;
 
 class NoteController extends Controller
 {
@@ -14,7 +15,8 @@ class NoteController extends Controller
 
     public function create()
     {
-        return view('note.create');
+        $labels = Label::all();
+        return view('note.create', compact('labels'));
     }
 
     public function store(Request $request)

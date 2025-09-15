@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.left_box{
+    margin:0 70px;
+}
+
+label { 
+    font-weight: bold; 
+}
+
+#name{
+    width: 250px;
+    height: 30px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 8px;   
+    border: 1px solid #ddd;
+    font-family: 'Fira Code', monospace;
+}
+
+li{
+    border-top: 1px solid #2c3e50 ;
+    border-bottom: 1px solid #2c3e50 ;
+    list-style: none;
+    font-size: 20px;
+    padding:5px 30px ;
+}

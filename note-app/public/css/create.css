@@ -24,7 +24,6 @@ label {
 }
 
 .preview-container{
-    margin-top:80px;
     margin-left:50px;
 }
 
@@ -54,4 +53,21 @@ input ,#preview{
 
 .preview-container button{
     margin-top: 23px;
+}
+
+#labels{
+    display: flex;          /* ←これが必要 */
+    align-items: center;    /* 縦中央 */
+    justify-content: center; /* 横中央にしたい場合 */
+    height: 30px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 8px;   
+    border: 1px solid #ddd;
+    padding: 7px 20px 0;        /* 縦パディングは0にする */
+    margin: 0;
+}
+
+
+select{
+    margin-bottom: 10px ;
 }
