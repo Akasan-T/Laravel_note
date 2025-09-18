@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ asset('/css/style.css')  }}">
         <link rel="stylesheet" href="{{ asset('/css/edit.css') }}">
-    <title>【ラベル】編集</title>
+    <title>【CodeNote】ラベル編集</title>
 </head>
 <body>
     <header>

@@ -19,7 +19,7 @@
         <button><a href="{{ route('notes.create') }}">新規作成</a></button>
         <button><a href="{{ route('label.create') }}">ラベル作成</a></button>
 
-        <h2>ノート一覧</h2>
+        <h2>Note一覧</h2>
 
         @if($notes->count())
             <ul>

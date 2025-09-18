@@ -71,3 +71,7 @@ input ,#preview{
 select{
     margin-bottom: 10px ;
 }
+
+.edit{
+    height:650px;
+}

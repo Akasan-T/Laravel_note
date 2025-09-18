@@ -22,7 +22,7 @@ class NoteController extends Controller
 
     public function store(Request $request)
     {
-        Note::create([
+        $mote=Note::create([
             'title' => $request -> title,
             'content' => $request -> content,
             'user_id'=> auth()->id(),
@@ -39,8 +39,27 @@ class NoteController extends Controller
     {
         $converter = new CommonMarkConverter();
         $htmlContent = $converter->convert($note->content);
+        $labels = Label::all();
 
-        return view('note.show',['note'=>$note,'htmlContent'=>$htmlContent,]);
+        return view('note.show', ['note'=> $note, 'htmlContent' => $htmlContent, 'labels'=> $labels,]);
     }
 
+    public function edit(Note $note)
+    {
+        $labels = Label::all();
+        return view('note.edit', compact('note','labels'));
+
+    }
+
+    public function update(Request $request, Note $note)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255', 
+            'content' => 'required',]);
+
+        $note->update(['title' => $request->title, 'content' => $request->content,]);
+
+        return redirect()->route('notes.show' ,$note)->with('success', 'ノートを更新しました');
+
+    }
 }
