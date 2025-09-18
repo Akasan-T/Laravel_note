@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログインページ</title>
+    <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
+
+    <title>【CodeNote】ログイン</title>
 </head>
 <body>
+    <header>
+        <h1><a href="{{ route('note') }}">CodeNote</a></h1>
+    </header>
     <h1>ログイン</h1>
     <form action="{{ route("login.store") }}" method="POST">
         @csrf

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Note;
 use App\Models\Label;
+use League\CommonMark\CommonMarkConverter;
 
 class NoteController extends Controller
 {
@@ -24,8 +25,22 @@ class NoteController extends Controller
         Note::create([
             'title' => $request -> title,
             'content' => $request -> content,
+            'user_id'=> auth()->id(),
         ]);
+
+        if  ($request->has('labels')) {
+            $note->labels()->attach($request->labels);
+        }
 
         return redirect()->route('notes.index');
     }
+
+    public function show(Note $note)
+    {
+        $converter = new CommonMarkConverter();
+        $htmlContent = $converter->convert($note->content);
+
+        return view('note.show',['note'=>$note,'htmlContent'=>$htmlContent,]);
+    }
+
 }

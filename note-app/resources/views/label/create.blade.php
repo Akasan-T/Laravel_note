@@ -30,11 +30,11 @@
             <span style="color: gray; font-size: 0.9em;">
                 （登録日: {{ $label->created_at->format('Y-m-d H:i') }}）
             </span>
-            <a href="{{ route('labels.edit',$label->id) }}">編集</a>
+            <a class="edit" href="{{ route('labels.edit',$label->id) }}">編集</a>
             <form action="{{ route('labels.destroy', $label->id) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" onclick="return confirm('消去しますか?')">消去</button>
+                <button class="delete" type="submit" onclick="return confirm('消去しますか?')">消去</button>
             </form>
         </li>
         @endforeach

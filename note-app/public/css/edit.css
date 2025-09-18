@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+label,input,button {
+    display: block; 
+}
+
+form{
+    margin-left: 70px;
+}
+
+label { 
+    font-weight: bold; 
+}
+
+input {
+    width: 250px;
+    height: 30px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 8px;   
+    border: 1px solid #ddd;
+    font-family: 'Fira Code', monospace;
+    margin-bottom: 25px;
+}

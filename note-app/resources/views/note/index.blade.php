@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('/css/style.css')  }}" >
     <link rel="stylesheet" href="{{ asset('/css/note.css')  }}" >
-    <title>ノート</title>
+    <title>【CodeNote】一覧</title>
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
     <div class="note_box">
 
         <button><a href="{{ route('notes.create') }}">新規作成</a></button>
-        <button><a href="{{ route('labels.create') }}">ラベル作成</a></button>
+        <button><a href="{{ route('label.create') }}">ラベル作成</a></button>
 
         <h2>ノート一覧</h2>
 
