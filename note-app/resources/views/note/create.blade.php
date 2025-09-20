@@ -14,10 +14,10 @@
     <header>
         <h1><a href="{{ route('note') }}">CodeNote</a></h1>
     </header>
-    <div class="editor-container">
-        <!-- Markdown入力側 -->
-        <div class="editor">
-            <form method="POST" action="{{ route('notes.store') }}">
+    <form method="POST" action="{{ route('notes.store') }}">
+        <div class="editor-container">
+            <!-- Markdown入力側 -->
+            <div class="editor">
                 @csrf
                 <label for="title">タイトル</label><br>
                 <input type="text" id="title" name="title"><br>
@@ -25,22 +25,26 @@
                 <textarea id="editor" name="content"></textarea>
                 <br>
                 <button type="submit">保存</button>
-            </form>
-        </div>
+            </div>
 
-        <!-- プレビュー側 -->
-        <div class="preview-container">
-            <label for="labels">ラベル</label><br>
-            <select name="labels[]" id="labels" multiple>
-                @foreach($labels as $label)
-                    <option value="{{ $label->id }}">{{ $label->name }}</option>
-                @endforeach
-            </select><br>
-            <label for="preview">プレビュー</label>
-            <div id="preview"></div>
-            <button><a href="{{ route('note') }}">戻る</a></button>
+            <!-- プレビュー側 -->
+            <div class="preview-container">
+                <label for="labels">ラベル</label><br>
+                <div class="label_box">
+                    @foreach($labels as $label)
+                        <label>
+                            <input type="checkbox" name="labels[]" value="{{ $label->id }}"
+                                {{ isset($note) && $note->labels->contains($label->id) ? 'checked' : '' }}>
+                            {{ $label->name }}
+                        </label><br>
+                    @endforeach
+                </div>
+                <label for="preview">プレビュー</label>
+                <div id="preview"></div>
+                <button><a href="{{ route('note') }}">戻る</a></button>
+            </div>
         </div>
-    </div>
+    </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/markdown/markdown.min.js"></script>

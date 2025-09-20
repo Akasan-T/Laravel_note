@@ -13,40 +13,49 @@
     <header>
         <h1><a href="{{ route('note') }}">CodeNote</a></h1>
     </header>
-    <div class="editor-container">
-    <!-- Markdown入力側 -->
-    <div class="editor">
-        <form method="POST" action="{{ route('notes.update', $note->id) }}">
-            @csrf
-            @method('PUT')
+    <form method="POST" action="{{ route('notes.update', $note->id) }}">
+    @csrf
+    @method('PUT')
+        <div class="editor-container" >
+        <!-- 上段: タイトル・内容 -->
+            <div class="editor-top">
+                <label for="title">タイトル</label>
+                <input type="text" id="title" name="title" value="{{ $note->title }}"><br>
 
-            <label for="title">タイトル</label><br>
-            <input type="text" id="title" name="title" value="{{ $note->title }}"><br>
+                <label for="editor">内容 (Markdown)</label>
+                <textarea id="editor" name="content">{{ $note->content }}</textarea>
+                <button type="submit" class="edit_keep_button">保存</button>
+            </div>
 
-            <label for="editor">内容 (Markdown)</label>
-            <textarea style="height: 580px; width: 650px;" id="editor" name="content">{{ $note->content }}</textarea><br>
+            <!-- 下段: ラベルとプレビューを横並び -->
+            <div class="editor-bottom" >
+                <!-- ラベル -->
+                <div class="label-column" >
+                    <label>ラベル</label>
+                    <div class="label_box">
+                        @foreach($labels as $label)
+                            <label >
+                                <input type="checkbox" name="labels[]" value="{{ $label->id }}"
+                                    {{ $note->labels->contains($label->id) ? 'checked' : '' }}>
+                                {{ $label->name }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
 
-            <button type="submit">保存</button>
-        </form>
-    </div>
+                <!-- プレビュー -->
+                <div class="preview-column" style="flex:2;">
+                    <label for="preview">プレビュー</label>
+                    <div id="preview" ></div>
+                    <button class="edit_back_button"><a href="{{ route('note') }}">戻る</a></button>
+                </div>
+                
+            </div>
+        </div>
+    </form>
+    <!-- 保存ボタン -->
+    
 
-    <!-- プレビュー側 -->
-    <div class="preview-container">
-        <label for="labels">ラベル</label><br>
-        <select name="labels[]" id="labels" multiple>
-            @foreach($labels as $label)
-                <option value="{{ $label->id }}" {{ $note->labels->contains($label->id) ? 'selected' : '' }}>
-                    {{ $label->name }}
-                </option>
-            @endforeach
-        </select><br>
-
-        <label for="preview">プレビュー</label>
-        <div id="preview" ></div>
-
-        <a href="{{ route('notes.index') }}"><button type="button">戻る</button></a>
-    </div>
-</div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>

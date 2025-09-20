@@ -22,7 +22,7 @@ class NoteController extends Controller
 
     public function store(Request $request)
     {
-        $mote=Note::create([
+        $note=Note::create([
             'title' => $request -> title,
             'content' => $request -> content,
             'user_id'=> auth()->id(),
@@ -46,6 +46,7 @@ class NoteController extends Controller
 
     public function edit(Note $note)
     {
+        $note ->load('labels');
         $labels = Label::all();
         return view('note.edit', compact('note','labels'));
 
@@ -55,9 +56,15 @@ class NoteController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255', 
-            'content' => 'required',]);
+            'content' => 'required|string',
+        ]);
 
-        $note->update(['title' => $request->title, 'content' => $request->content,]);
+        $note->update([
+            'title'=>$request->title,
+            'content'=>$request->content,
+        ]);
+
+        $note->labels()->sync($request->labels ?? []);
 
         return redirect()->route('notes.show' ,$note)->with('success', 'ノートを更新しました');
 

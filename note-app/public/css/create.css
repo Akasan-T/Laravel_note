@@ -67,11 +67,31 @@ input ,#preview{
     margin: 0;
 }
 
-
 select{
     margin-bottom: 10px ;
 }
 
 .edit{
     height:650px;
+}
+
+.label_box{
+    display:flex; 
+    gap:10px; 
+    overflow-x:auto; 
+    padding:5px; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    white-space:nowrap;
+    margin-bottom: 20px;
+}
+
+.edit_keep_button,.edit_back_button{
+    margin-top: 20px;
+}
+
+.pas{
+    margin-bottom: 30px;
+    
 }
