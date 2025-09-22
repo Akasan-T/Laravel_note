@@ -34,9 +34,9 @@
                     <label>ラベル</label>
                     <div class="label_box">
                         @foreach($labels as $label)
-                            <label >
+                            <label style="background-color: {{ $label->color ?? '#cccccc' }}; padding: 0.2em 0.5em; border-radius: 4px; color: #fff;">
                                 <input type="checkbox" name="labels[]" value="{{ $label->id }}"
-                                    {{ $note->labels->contains($label->id) ? 'checked' : '' }}>
+                                    {{ isset($note) && $note->labels->contains($label->id) ? 'checked' : '' }}>
                                 {{ $label->name }}
                             </label>
                         @endforeach
@@ -53,7 +53,6 @@
             </div>
         </div>
     </form>
-    <!-- 保存ボタン -->
     
 
 

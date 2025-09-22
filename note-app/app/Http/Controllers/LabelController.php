@@ -9,7 +9,13 @@ class LabelController extends Controller
 {
     public function create()
     {
-        $labels = Label::all();
+        $labels = Label::all()->map(function($label) {
+            $label->formatted_created_at = $label->created_at ? $label->created_at->format('Y-m-d H:i') : '';
+            return $label;
+    
+        });
+
+        $label = null;
         return view('label.create', compact('labels'));
     }
 
@@ -21,9 +27,10 @@ class LabelController extends Controller
 
         Label::create([
             'name' => $request->name,
+            'color' => $request->color ?? '#cccccc',
         ]);
 
-        return redirect()->route('notes.create')->with('success', 'ラベルを追加しました');
+        return redirect()->route('label.create')->with('success', 'ラベルを追加しました');
     }
 
     public function edit(Label $label)
@@ -35,9 +42,13 @@ class LabelController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255|unique:labels,name,' . $label->id,
+            'color' => 'nullable|string|max:7',
         ]);
 
-        $label->update(['name' => $request->name]);
+        $label->update([
+            'name' => $request->name,
+            'color' => $request->color ?? $label->color,
+        ]);
         return redirect()->route('label.create')->with('success','ラベルを更新しました');
     }
 

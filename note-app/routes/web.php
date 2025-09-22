@@ -11,6 +11,8 @@ Route::get('/',[NoteController::class, 'index']);
 
 Route::get('/top', [TopCONTROLLER::class, 'index'])->name("top");
 
+Route::get('/notes',[NoteController::class, 'index'])->name('notes.index');
+
 Route::prefix('sign_up')->group(function() {
     Route::get('/', [SignUpController::class, 'index'])->name("sign_up");
     Route::post('/', [SignUpController::class, 'store'])->name("sign_up.store");

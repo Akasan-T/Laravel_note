@@ -16,6 +16,9 @@
         @method('PUT')
         <label for="name">ラベル名</label>
         <input type="text" id="name" name="name" value="{{ $label->name }}">
+
+        <label for="color">カラー</label>
+            <input type="color" name="color" id="color" value="{{ $label->color ?? '#cccccc' }}">
         <button type="submit">更新</button>
     </form>
 

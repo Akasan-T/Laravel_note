@@ -32,7 +32,7 @@
                 <label for="labels">ラベル</label><br>
                 <div class="label_box">
                     @foreach($labels as $label)
-                        <label>
+                        <label style="background-color: {{ $label->color ?? '#cccccc' }}; padding: 0.2em 0.5em; border-radius: 4px; color: #fff;">
                             <input type="checkbox" name="labels[]" value="{{ $label->id }}"
                                 {{ isset($note) && $note->labels->contains($label->id) ? 'checked' : '' }}>
                             {{ $label->name }}

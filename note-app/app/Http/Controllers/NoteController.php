@@ -6,12 +6,47 @@ use Illuminate\Http\Request;
 use App\Models\Note;
 use App\Models\Label;
 use League\CommonMark\CommonMarkConverter;
+use Illuminate\Support\Str;
 
 class NoteController extends Controller
 {
-    function index() {
-        $notes = Note::all();
-        return view("note.index", compact('notes'));
+    public function index(Request $request) 
+    {
+        $labelId = $request->query('label');
+        $keyword = $request->query('keyword');
+        $converter = new CommonMarkConverter();
+
+        $query = Note::with('labels');
+
+        if($labelId){
+            $query->whereHas('labels', function($q) use ($labelId) {
+                $q->where('labels.id', $labelId);
+            });
+        }
+
+        if ($keyword) {
+            $query->where(function($q) use ($keyword){
+                $q ->where('title','like',"%{$keyword}%")
+                    ->orWhere('content','like',"%{$keyword}%");
+            });
+        }
+
+
+
+        $notes = $query->get();
+        
+
+        foreach ($notes as $note) {
+            $note->html_preview = Str::limit(
+                strip_tags($converter->convert($note->content)->getContent()),
+                100,
+                '...'
+            );
+        }
+
+        $labels = Label::all();
+
+        return view('note.index', compact('notes','notes','labels','labelId'));
     }
 
     public function create()
