@@ -14,6 +14,13 @@
     <div class="box">
         <button><a href="{{ route('notes.index') }}">戻る</a></button>
         <button><a href="{{ route('notes.edit', $note->id) }}">編集</a></button>
+        <form action="{{ route('notes.destroy', $note->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button class="delete" type="submit" onclick="return confirm('このノートを削除しますか？')">
+                                削除
+                            </button>
+                        </form>
         <div class="contents_box">
             {!! $htmlContent !!}
         </div>

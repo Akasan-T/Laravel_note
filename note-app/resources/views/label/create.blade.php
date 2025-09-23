@@ -28,7 +28,13 @@
         </div>
     </form>
 
-    <h2>ラベル一覧</h2>
+    <div class="label-filters">
+        <h2>ラベル一覧</h2>
+        <form method="GET" action="{{ route('labels.index') }}">
+            <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="ラベル名で検索">
+            <button type="submit">検索</button>
+        </form>
+    </div>
     <ul class="label-list">
         @foreach($labels as $label)
         <li class="label-item">

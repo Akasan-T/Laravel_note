@@ -104,4 +104,12 @@ class NoteController extends Controller
         return redirect()->route('notes.show' ,$note)->with('success', 'ノートを更新しました');
 
     }
+
+    public function destroy(Note $note)
+    {
+        $note->delete();
+
+        return redirect()->route('notes.index')
+            ->with('success','ノートを消去しました');
+    }
 }

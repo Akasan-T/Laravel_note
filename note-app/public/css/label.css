@@ -8,6 +8,11 @@ label {
     font-weight: bold; 
 }
 
+h2{
+    font-size: 40px;
+}
+
+
 #name{
     width: 250px;
     height: 30px;
@@ -132,4 +137,16 @@ label {
     content: '';
     border-radius: 50%;
     background: #f9f9f9;
+}
+
+.label-filters {
+    display: flex;         /* 横並び */
+    align-items: center;   /* 高さを揃える */
+    gap: 1rem;             /* 要素間の余白 */
+}
+
+.label-filters form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;           /* 入力とボタンの余白 */
 }
