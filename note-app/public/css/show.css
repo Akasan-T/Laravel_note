@@ -1,0 +1,14 @@
+@charset "UHF-8";
+
+.box{
+    margin:0 70px;
+}
+
+.contents_box{
+    margin-top: 30px;
+    max-height: 600px;   /* 好きな高さに調整 */
+    overflow-y: auto;    /* 縦スクロール */
+    padding: 1em;
+    border: 1px solid #ddd;
+    background: #fafafa;
+}
