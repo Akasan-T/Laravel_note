@@ -1,47 +1,54 @@
-# 📒 Code Note 概要
+# 📒 Code Note
 
-## 制作概要
-- 2年次前期のPHP審査会提出課題として制作  
+> コードやメモをMarkdown形式で整理・管理できる個人向けWebアプリケーション
 
-- 自分のコードやメモを効率的に整理・管理するための Web アプリケーション  
-  
-- Markdown に対応しており、コードや文章を見やすくまとめられる  
-  
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
-## 🧑‍💻 使用言語・フレームワーク
-![](https://skillicons.dev/icons?i=html,css,js,php,laravel,)
+---
 
-- HTML / CSS / JavaScript  
-  （フロントエンドで画面や操作性を作っています）
- 
-- PHP / Laravel  
-  （バックエンドでデータの保存や管理を担当しています）
- 
+## 📌 概要
 
-### [GitHub リポジトリ](https://github.com/Akasan-T/Code_Note)  
-⬆︎⬆︎⬆︎興味がある方はここからコードを見れます⬆︎⬆︎⬆︎
+エンジニアが自分のコードスニペットやメモを一元管理するためのWebアプリです。  
+Markdownエディタを搭載し、リアルタイムプレビューで快適にノートを作成できます。  
+ラベル機能でノートを分類・整理でき、画像の埋め込みにも対応しています。
 
-## 使用ライブラリ
-- **CodeMirror**  
-  Web 上でリッチテキストエディタを実現するライブラリ  
-  
-- **commonmark**  
-  Markdown を HTML に変換するライブラリ  
-  
+---
 
-## 主な機能
-- ユーザー認証（ログイン・ログアウト）  
-  
-- ノートの新規作成、編集、削除  
-  
-- ノートへのラベル付けによる整理機能 
+## 🛠️ 技術スタック
 
-- ノート内への画像挿入機能  
-  
-- Markdown のリアルタイムプレビュー  
-  
+| カテゴリ | 使用技術 |
+|---|---|
+| バックエンド | PHP / Laravel |
+| フロントエンド | HTML / CSS / JavaScript |
+| データベース | MySQL |
+| エディタ | CodeMirror（リッチテキストエディタ） |
+| Markdown変換 | commonmark |
 
-## 今後追加したい機能
-- PDF 書き出し機能  
+---
 
-- 複数ユーザーでのリアルタイム編集（コラボレーション）機能
+## ✨ 主な機能
+
+- **ユーザー認証** ― 新規登録・ログイン・ログアウト
+- **ノート管理** ― 作成・編集・削除（CRUD）
+- **Markdownリアルタイムプレビュー** ― CodeMirrorによるコードハイライト付きエディタ
+- **ラベル管理** ― ノートへのラベル付けとフィルタリング
+- **画像挿入** ― ノート内への画像アップロード・埋め込み
+
+---
+
+## 🔧 設計のポイント
+
+- **MVC アーキテクチャ** ― Laravelの設計パターンに従ったコード構成
+- **認証機能** ― Laravel Breezeを用いたセキュアなユーザー認証
+- **リアルタイムUI** ― JavaScriptによるMarkdownのリアルタイムプレビュー実装
+- **ライブラリ活用** ― OSSライブラリの選定・統合の経験
+
+---
+
+## 🚀 今後追加したい機能
+
+- PDF書き出し機能
+- 複数ユーザーによるリアルタイム共同編集（WebSocket活用）
